@@ -17,4 +17,14 @@ export class DeckFormatter {
       remaining: this.cardCounter.countRemaining(cards),
     };
   }
+
+  formatOpenedDeck({ id, type, shuffled, cards }): {} {
+    return {
+      deckId: id,
+      type,
+      shuffled,
+      remaining: this.cardCounter.countRemaining(cards),
+      cards: cards.map(this.cardFormatter.format),
+    };
+  }
 }

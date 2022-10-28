@@ -10,6 +10,13 @@ export class DecksController {
     private deckFormatter: DeckFormatter,
   ) {}
 
+  @Get('open')
+  async openDeck(@Query('deckId') deckId: string): Promise<{}> {
+    const deck = await this.decksService.open(deckId);
+
+    return this.deckFormatter.formatOpenedDeck(deck);
+  }
+
   @Post('create')
   async createDeck(@Body() createDeckDto: CreateDeckDto): Promise<{}> {
     const deck = await this.decksService.create(createDeckDto);

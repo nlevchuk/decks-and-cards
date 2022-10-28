@@ -18,4 +18,16 @@ export class DecksService {
 
     return this.deckRepository.save(deck);
   }
+
+  async open(deckId): Promise<Deck> {
+    return this.deckRepository.findOne({
+      where: { id: deckId },
+      relations: { cards: true },
+      order: {
+        cards: {
+          order: 'ASC',
+        },
+      },
+    });
+  }
 }
