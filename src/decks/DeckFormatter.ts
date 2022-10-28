@@ -4,6 +4,7 @@ import { CardCounter } from '../cards/CardCounter';
 import { Card } from '../cards/card.entity';
 import { CreateDeckOutputDto } from './dto/create-deck.output.dto';
 import { OpenDeckOutputDto } from './dto/open-deck.output.dto';
+import { DrawCardsOutputDto } from './dto/draw-cards.output.dto';
 
 @Injectable()
 export class DeckFormatter {
@@ -27,6 +28,12 @@ export class DeckFormatter {
       type,
       shuffled,
       remaining: this.cardCounter.countRemaining(cards),
+      cards: cards.map(this.cardFormatter.format),
+    };
+  }
+
+  formatDrawnCards(cards): DrawCardsOutputDto {
+    return {
       cards: cards.map(this.cardFormatter.format),
     };
   }

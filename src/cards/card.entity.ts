@@ -6,6 +6,9 @@ export class Card {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column({ type: 'uuid' })
+  deckId: string;
+
   @Column()
   value: string;
 

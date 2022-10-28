@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateDeckInputDto } from './dto/create-deck.input.dto';
+import { DrawCardsInputDto } from './dto/draw-cards.input.dto';
 import { Deck } from './deck.entity';
+import { Card } from '../cards/card.entity';
 import { DeckBuilder } from './DeckBuilder';
 
 @Injectable()
@@ -10,6 +12,8 @@ export class DecksService {
   constructor(
     @InjectRepository(Deck)
     private deckRepository: Repository<Deck>,
+    @InjectRepository(Card)
+    private cardRepository: Repository<Card>,
     private deckBuilder: DeckBuilder,
   ) {}
 
@@ -29,5 +33,19 @@ export class DecksService {
         },
       },
     });
+  }
+
+  async drawCards({ deckId, count }: DrawCardsInputDto): Promise<Card[]> {
+    const cards = await this.cardRepository.find({
+      where: { deckId },
+      order: {
+        order: 'ASC',
+      },
+      take: count,
+    });
+
+    await this.cardRepository.remove(cards);
+
+    return cards;
   }
 }
