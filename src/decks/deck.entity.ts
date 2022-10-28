@@ -4,16 +4,16 @@ import { Card } from '../cards/card.entity';
 @Entity({ name: 'decks' })
 export class Deck {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id: string;
 
   @Column()
-  type: string
+  type: string;
 
   @Column()
-  shuffled: boolean
+  shuffled: boolean;
 
   @OneToMany(() => Card, (card) => card.deck, {
     cascade: true,
   })
-  cards: Card[]
+  cards: Card[];
 }

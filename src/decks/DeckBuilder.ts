@@ -10,7 +10,7 @@ import { buildDeck } from './utils/buildDeck';
 const deckTypesMap = {
   [DeckType.FULL]: FullDeck,
   [DeckType.SHORT]: ShortDeck,
-}
+};
 
 @Injectable()
 export class DeckBuilder {

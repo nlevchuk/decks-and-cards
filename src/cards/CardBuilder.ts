@@ -17,8 +17,8 @@ export class CardBuilder {
 
         cards.push(card);
         order += 1;
-      };
-    };
+      }
+    }
 
     return cards;
   }

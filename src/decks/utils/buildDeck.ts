@@ -13,4 +13,4 @@ export const buildDeck = (
   deck.cards = cards;
 
   return deck;
-}
+};

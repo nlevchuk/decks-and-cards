@@ -10,10 +10,6 @@ import { Deck } from './deck.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Deck]), CardsModule],
   controllers: [DecksController],
-  providers: [
-    DecksService,
-    DeckBuilder,
-    DeckFormatter,
-  ],
+  providers: [DecksService, DeckBuilder, DeckFormatter],
 })
 export class DecksModule {}

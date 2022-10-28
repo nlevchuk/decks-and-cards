@@ -26,9 +26,7 @@ describe('CardShuffler', () => {
     it('returns shuffled cards', () => {
       const shuffledCards = cardShuffler.shuffle(cards);
 
-      expect(
-        sortBy(shuffledCards, ['order'])
-      ).not.toEqual(cards);
+      expect(sortBy(shuffledCards, ['order'])).not.toEqual(cards);
     });
   });
 });

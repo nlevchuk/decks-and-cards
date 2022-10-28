@@ -6,17 +6,17 @@ import { Deck } from '../decks/deck.entity';
 @Entity({ name: 'cards' })
 export class Card {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id: string;
 
   @Column()
-  value: string
+  value: string;
 
   @Column()
-  suit: string
+  suit: string;
 
   @Column()
-  order: number
+  order: number;
 
   @ManyToOne(() => Deck, (deck) => deck.cards)
-  deck: Deck
+  deck: Deck;
 }
