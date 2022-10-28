@@ -12,6 +12,10 @@ start:
 
 stop:
 		docker compose stop
+
+db-migrate:
+		docker compose exec app npm run db:migrate
+
 app-bash:
 		docker compose exec app bash
 
