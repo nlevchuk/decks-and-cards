@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CardFormatter } from '../cards/CardFormatter';
 import { CardCounter } from '../cards/CardCounter';
+import { Card } from '../cards/card.entity';
+import { CreateDeckOutputDto } from './dto/create-deck.output.dto';
+import { OpenDeckOutputDto } from './dto/open-deck.output.dto';
 
 @Injectable()
 export class DeckFormatter {
@@ -9,7 +12,7 @@ export class DeckFormatter {
     private cardCounter: CardCounter,
   ) {}
 
-  formatCreatedDeck({ id, type, shuffled, cards }): {} {
+  formatCreatedDeck({ id, type, shuffled, cards }): CreateDeckOutputDto {
     return {
       deckId: id,
       type,
@@ -18,7 +21,7 @@ export class DeckFormatter {
     };
   }
 
-  formatOpenedDeck({ id, type, shuffled, cards }): {} {
+  formatOpenedDeck({ id, type, shuffled, cards }): OpenDeckOutputDto {
     return {
       deckId: id,
       type,

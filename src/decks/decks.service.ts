@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateDeckDto } from './dto/create-deck.dto';
+import { CreateDeckInputDto } from './dto/create-deck.input.dto';
 import { Deck } from './deck.entity';
 import { DeckBuilder } from './DeckBuilder';
 
@@ -13,7 +13,7 @@ export class DecksService {
     private deckBuilder: DeckBuilder,
   ) {}
 
-  async create({ type, shuffled }: CreateDeckDto): Promise<Deck> {
+  async create({ type, shuffled }: CreateDeckInputDto): Promise<Deck> {
     const deck = this.deckBuilder.build(type, shuffled);
 
     return this.deckRepository.save(deck);

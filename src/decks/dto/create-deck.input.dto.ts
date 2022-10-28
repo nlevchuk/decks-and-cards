@@ -1,6 +1,6 @@
 import { DeckType } from '../enums/types.enum';
 
-export class CreateDeckDto {
+export class CreateDeckInputDto {
   type: DeckType;
   shuffled: boolean;
 }

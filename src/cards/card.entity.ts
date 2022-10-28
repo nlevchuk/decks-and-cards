@@ -1,6 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { CardValue } from '../cards/enums/values.enum';
-import { CardSuit } from '../cards/enums/suits.enum';
 import { Deck } from '../decks/deck.entity';
 
 @Entity({ name: 'cards' })

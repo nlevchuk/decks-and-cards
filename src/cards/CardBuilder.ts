@@ -11,8 +11,8 @@ export class CardBuilder {
 
     const suits = Object.values(CardSuit);
     let order = 1;
-    for (let suit of suits) {
-      for (let value of availableValues) {
+    for (const suit of suits) {
+      for (const value of availableValues) {
         const card = buildCard(value, suit, order);
 
         cards.push(card);
@@ -27,7 +27,7 @@ export class CardBuilder {
     const newCards = [];
 
     let order = 1;
-    for (let card of cards) {
+    for (const card of cards) {
       const { value, suit } = card;
       const newCard = buildCard(value, suit, order);
       newCards.push(newCard);
