@@ -18,3 +18,7 @@ app-bash:
 logs:
 		docker compose logs -f
 
+test:
+	docker compose exec app npm run test
+
+.PHONY: test
