@@ -1,6 +1,16 @@
-import { Controller, Get, Post, Put, Body, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Body,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { DecksService } from './decks.service';
 import { DeckFormatter } from './DeckFormatter';
+import { OpenDeckInputDto } from './dto/open-deck.input.dto';
 import { CreateDeckInputDto } from './dto/create-deck.input.dto';
 import { CreateDeckOutputDto } from './dto/create-deck.output.dto';
 import { OpenDeckOutputDto } from './dto/open-deck.output.dto';
@@ -15,7 +25,12 @@ export class DecksController {
   ) {}
 
   @Get('open')
-  async openDeck(@Query('deckId') deckId: string): Promise<OpenDeckOutputDto> {
+  @UsePipes(new ValidationPipe({
+    stopAtFirstError: true,
+  }))
+  async openDeck(
+    @Query() { deckId }: OpenDeckInputDto,
+  ): Promise<OpenDeckOutputDto> {
     const deck = await this.decksService.open(deckId);
 
     return this.deckFormatter.formatOpenedDeck(deck);
@@ -31,6 +46,9 @@ export class DecksController {
   }
 
   @Put('draw-cards')
+  @UsePipes(new ValidationPipe({
+    stopAtFirstError: true,
+  }))
   async drawCards(
     @Body() drawCardsDto: DrawCardsInputDto,
   ): Promise<DrawCardsOutputDto> {

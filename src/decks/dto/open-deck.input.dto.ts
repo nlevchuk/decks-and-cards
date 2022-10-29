@@ -1,9 +1,7 @@
 import { IsNotEmpty, IsUUID } from 'class-validator';
 
-export class DrawCardsInputDto {
+export class OpenDeckInputDto {
   @IsUUID()
   @IsNotEmpty()
   deckId: string;
-
-  count: number;
 }
