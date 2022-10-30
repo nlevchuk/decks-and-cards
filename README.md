@@ -1,3 +1,5 @@
+![Test](https://github.com/nlevchuk/decks-and-cards/actions/workflows/test.yml/badge.svg)
+
 ## Description
 
 The small application provides API for creating and opening decks as well as drawing cards.
