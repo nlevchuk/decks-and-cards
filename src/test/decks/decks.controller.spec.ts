@@ -10,13 +10,14 @@ import { Deck } from '../../decks/deck.entity';
 import { Card } from '../../cards/card.entity';
 import { loadFixturesData } from '../helpers/load-fixtures-data';
 
-const deckId = '521b0293-01f7-44c2-9990-27079eb2352d';
+const shortDeckOut = loadFixturesData('create-short-not-shuffled-deck.output');
+const fullDeckOut = loadFixturesData('create-full-not-shuffled-deck.output');
 
 const mockDecksRepository = {
   save: (deck) => {
     return {
       ...deck,
-      id: deckId,
+      id: shortDeckOut.deckId,
     };
   },
 };
@@ -27,22 +28,22 @@ describe('DecksController', () => {
 
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
-        imports: [CardsModule],
-        controllers: [DecksController],
-        providers: [
-          DecksService,
-          DeckBuilder,
-          DeckFormatter,
-          {
-            provide: getRepositoryToken(Deck),
-            useValue: mockDecksRepository,
-          },
-          {
-            provide: getRepositoryToken(Card),
-            useValue: mockCardsRepository,
-          },
-        ],
-      }).compile();
+      imports: [CardsModule],
+      controllers: [DecksController],
+      providers: [
+        DecksService,
+        DeckBuilder,
+        DeckFormatter,
+        {
+          provide: getRepositoryToken(Deck),
+          useValue: mockDecksRepository,
+        },
+        {
+          provide: getRepositoryToken(Card),
+          useValue: mockCardsRepository,
+        },
+      ],
+    }).compile();
 
     decksController = moduleRef.get<DecksController>(DecksController);
   });
@@ -54,9 +55,8 @@ describe('DecksController', () => {
           type: DeckType.SHORT,
           shuffled: false,
         });
-        const result = loadFixturesData('create-short-not-shuffled-deck');
 
-        expect(output).toEqual(result);
+        expect(output).toEqual(shortDeckOut);
       });
     });
 
@@ -66,9 +66,8 @@ describe('DecksController', () => {
           type: DeckType.FULL,
           shuffled: false,
         });
-        const result = loadFixturesData('create-full-not-shuffled-deck');
 
-        expect(output).toEqual(result);
+        expect(output).toEqual(fullDeckOut);
       });
     });
   });
