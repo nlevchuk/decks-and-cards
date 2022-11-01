@@ -25,4 +25,7 @@ logs:
 test:
 	docker compose exec app npm run test
 
+test-e2e:
+	docker compose exec app npm run test:e2e
+
 .PHONY: test

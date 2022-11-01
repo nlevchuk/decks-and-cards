@@ -1,0 +1,17 @@
+[
+  {
+    "deckId": "521b0293-01f7-44c2-9990-27079eb2352d",
+    "value": "ACE",
+    "suit": "HEARTS"
+  },
+  {
+    "deckId": "521b0293-01f7-44c2-9990-27079eb2352d",
+    "value": "KING",
+    "suit": "HEARTS"
+  },
+  {
+    "deckId": "521b0293-01f7-44c2-9990-27079eb2352d",
+    "value": "QUEEN",
+    "suit": "HEARTS"
+  }
+]

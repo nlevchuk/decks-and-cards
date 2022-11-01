@@ -1,0 +1,7 @@
+{
+  "cards": [
+    { "value": "ACE", "suit": "HEARTS", "code": "AH" },
+    { "value": "KING", "suit": "HEARTS", "code": "KH" },
+    { "value": "QUEEN", "suit": "HEARTS", "code": "QH" }
+  ]
+}

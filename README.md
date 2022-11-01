@@ -106,3 +106,7 @@ curl -X "PUT" "http://localhost:3000/decks/draw-cards" \
 ```bash
 $ make test
 ```
+
+```bash
+$ make test-e2e
+```
